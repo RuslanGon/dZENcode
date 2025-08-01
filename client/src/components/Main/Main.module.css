@@ -1,0 +1,32 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background: #f1f8fd;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 150, 200, 0.1);
+  text-align: center;
+  gap: 24px;
+}
+
+.image {
+  width: 60%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 150, 200, 0.15);
+}
+
+.content h1 {
+  color: #0277bd;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}

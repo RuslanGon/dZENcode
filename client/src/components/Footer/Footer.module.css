@@ -1,0 +1,27 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0277bd;
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 -3px 10px rgba(2, 119, 189, 0.3);
+    user-select: none;
+    gap: 20px;
+    position: relative;
+  }
+  
+  .logo {
+    position: absolute;
+    left: 30px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #b3e5fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .text {
+    margin: 0;
+    font-size: 14px;
+  }
+  
