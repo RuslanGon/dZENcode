@@ -8,4 +8,78 @@ export const getAllPosts = async (req, res) => {
       console.error('Ошибка при получении постов:', error);
       res.status(500).json({ message: 'Не удалось получить посты' });
     }
-  };
+};
+
+export const createPost = async (req, res) => {
+    try {
+      const { username, email, homepage, captcha, text } = req.body;
+  
+      const newPost = new PostModel({
+        username,
+        email,
+        homepage,
+        captcha,
+        text,
+      });
+  
+      const savedPost = await newPost.save();
+  
+      res.status(201).json(savedPost);
+    } catch (error) {
+      console.error('Ошибка при создании поста:', error);
+      res.status(500).json({ message: 'Не удалось создать пост' });
+    }
+};
+
+export const getByOnePost = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const post = await PostModel.findById(id);
+      if (!post) {
+        return res.status(404).json({ message: 'Пост не найден' });
+      }
+      res.json(post);
+    } catch (error) {
+      console.error('Ошибка при получении поста:', error);
+      res.status(500).json({ message: 'Не удалось получить пост' });
+    }
+};
+
+export const uploadPost = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updates = req.body;
+  
+      const updatedPost = await PostModel.findByIdAndUpdate(
+        id,
+        { $set: updates },  
+        { new: true }
+      );
+  
+      if (!updatedPost) {
+        return res.status(404).json({ message: 'Пост не найден' });
+      }
+  
+      res.json(updatedPost);
+    } catch (error) {
+      console.error('Ошибка при обновлении поста:', error);
+      res.status(500).json({ message: 'Не удалось обновить пост' });
+    }
+};
+
+export const deletePost = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const deletedPost = await PostModel.findByIdAndDelete(id);
+  
+      if (!deletedPost) {
+        return res.status(404).json({ message: 'Пост не найден' });
+      }
+  
+      res.json({ message: 'Пост успешно удалён' });
+    } catch (error) {
+      console.error('Ошибка при удалении поста:', error);
+      res.status(500).json({ message: 'Не удалось удалить пост' });
+    }
+};

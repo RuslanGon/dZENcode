@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 import cors from 'cors'
 import startServer from './db.js';
-import { getAllPosts } from './controllers/PostContloller.js';
+import { createPost, deletePost, getAllPosts, getByOnePost, uploadPost } from './controllers/PostContloller.js';
 
 
 dotenv.config(); 
@@ -14,9 +14,11 @@ app.use(cors())
 
 // Post
 
-app.use('/post', getAllPosts)
-
-
+app.get('/post', getAllPosts)
+app.post('/post', createPost)
+app.get('/post/:id', getByOnePost)
+app.patch('/post/:id', uploadPost)
+app.delete('/post/:id', deletePost)
 
 
 startServer(app);
