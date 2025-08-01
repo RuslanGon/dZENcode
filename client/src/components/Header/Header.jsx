@@ -5,7 +5,7 @@ import styles from './Header.module.css'
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>dZONcode</div>
+      <Link to="/" className={styles.logo}>dZONcode</Link>
       <nav className={styles.nav}>
         <Link to="/comments" className={styles.link}>Комментарии</Link>
         <Link to="/add-comment" className={styles.link}>Добавить комментарий</Link>
