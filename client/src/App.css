@@ -1,18 +1,24 @@
 
-html, body {
+html, body, #root {
+  height: 100%;
   margin: 0;
-  padding: 0;
+}
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-#root {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0;
-}
+
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
