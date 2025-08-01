@@ -6,6 +6,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.logo}>dZONcode</div>
       <p className={styles.text}>© 2025 dZONcode. Все права защищены.</p>
+      <p className={styles.text1}>© Goncharenko Ruslan</p>
     </footer>
   )
 }
