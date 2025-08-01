@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './AddComent.module.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddComent = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const AddComent = () => {
     captcha: '',
     text: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +32,7 @@ const AddComent = () => {
         captcha: '',
         text: '',
       });
+      navigate('/comments');
     } catch (error) {
       console.error('Ошибка при отправке комментария:', error);
       alert('Произошла ошибка при добавлении комментария.');
