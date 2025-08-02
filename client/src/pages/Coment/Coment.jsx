@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import styles from './Coment.module.css';
-import { FaTrashAlt, FaPen } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import styles from "./Coment.module.css";
+import { FaPen, FaTrashAlt } from "react-icons/fa";
 
 const Coment = () => {
   const [posts, setPosts] = useState([]);
@@ -10,11 +10,13 @@ const Coment = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/post');
-        const sorted = res.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        const res = await axios.get("http://localhost:3001/post");
+        const sorted = res.data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
         setPosts(sorted);
       } catch (err) {
-        console.error('Ошибка при получении постов:', err);
+        console.error("Ошибка при получении постов:", err);
       } finally {
         setLoading(false);
       }
@@ -24,12 +26,12 @@ const Coment = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (window.confirm('Вы уверены, что хотите удалить комментарий?')) {
+    if (window.confirm("Вы уверены, что хотите удалить комментарий?")) {
       try {
         await axios.delete(`http://localhost:3001/post/${id}`);
-        setPosts(prev => prev.filter(post => post._id !== id));
+        setPosts((prev) => prev.filter((post) => post._id !== id));
       } catch (err) {
-        console.error('Ошибка при удалении поста:', err);
+        console.error("Ошибка при удалении поста:", err);
       }
     }
   };
@@ -51,15 +53,22 @@ const Coment = () => {
               alt="avatar"
               className={styles.avatar}
             />
-            <div className={styles.userInfo}>
-              <div className={styles.username}>{post.username}</div>
-              <div className={styles.meta}>
-                {new Date(post.createdAt).toLocaleString()}
-              </div>
+            <div className={styles.userMeta}>
+              <span className={styles.username}>{post.username}</span>
+              <span className={styles.meta}>
+                {new Date(post.createdAt).toLocaleDateString()} в{" "}
+                {new Date(post.createdAt).toLocaleTimeString()}
+              </span>
               {post.homepage && (
-                <div className={styles.tags}>
-                  <a href={post.homepage} target="_blank" rel="noopener noreferrer">Сайт</a>
-                </div>
+                <span className={styles.tags}>
+                  <a
+                    href={post.homepage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Сайт
+                  </a>
+                </span>
               )}
             </div>
           </div>
@@ -70,11 +79,19 @@ const Coment = () => {
           />
 
           <div className={styles.actions}>
-            <button className={styles.iconButton} onClick={() => handleEdit(post._id)}>
-              <FaPen />
-            </button>
-            <button className={styles.iconButton} onClick={() => handleDelete(post._id)}>
+          <button
+              className={styles.iconButton}
+              onClick={() => handleDelete(post._id)}
+              title="Удалить"
+            >
               <FaTrashAlt />
+            </button>
+            <button
+              className={styles.iconButton}
+              onClick={() => handleEdit(post._id)}
+              title="Редактировать"
+            >
+              <FaPen />
             </button>
           </div>
         </div>
