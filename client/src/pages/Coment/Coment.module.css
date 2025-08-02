@@ -12,14 +12,20 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background: #f5fbff;
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   padding: 15px;
+  gap: 10px;
+  position: relative;
+}
+
+.mainContent {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .topRow {
@@ -67,7 +73,51 @@
   line-height: 1.5;
 }
 
-.actions {
+/* Стрелки и номер — справа сверху */
+.rightControls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+.arrowsRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrowButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #444;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.arrowButton:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.arrowButton:hover:not(:disabled) {
+  color: #0277bd;
+}
+
+.positionNumber {
+  font-weight: 700;
+  font-size: 16px;
+  color: #0277bd;
+  user-select: none;
+}
+
+/* Кнопки удаления и редактирования — внизу по ширине карточки */
+.bottomActions {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -77,9 +127,9 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
-  padding: 5px;
+  font-size: 22px;
   color: #444;
+  padding: 5px;
   transition: color 0.2s;
 }
 
