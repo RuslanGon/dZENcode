@@ -17,7 +17,8 @@ const EditComent = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/post/${id}`);
+        // const res = await axios.get(`http://localhost:3001/post/${id}`);
+        const res = await axios.get(`https://dzencode.onrender.com/post/${id}`);
         setFormData(res.data);
       } catch (err) {
         console.error('Ошибка при загрузке поста:', err);
@@ -37,7 +38,8 @@ const EditComent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:3001/post/${id}`, formData);
+    //   await axios.patch(`http://localhost:3001/post/${id}`, formData);
+    await axios.patch(`https://dzencode.onrender.com/post/${id}`, formData);
       alert('Комментарий обновлён!');
       navigate('/comments');
     } catch (err) {

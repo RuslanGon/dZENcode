@@ -12,7 +12,8 @@ const Coment = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/post");
+        // const res = await axios.get("http://localhost:3001/post");
+        const res = await axios.get("https://dzencode.onrender.com/post");
         const sorted = res.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
@@ -30,7 +31,8 @@ const Coment = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Вы уверены, что хотите удалить комментарий?")) {
       try {
-        await axios.delete(`http://localhost:3001/post/${id}`);
+        // await axios.delete(`http://localhost:3001/post/${id}`);
+        await axios.delete(`https://dzencode.onrender.com/post/${id}`);
         setPosts((prev) => prev.filter((post) => post._id !== id));
       } catch (err) {
         console.error("Ошибка при удалении поста:", err);

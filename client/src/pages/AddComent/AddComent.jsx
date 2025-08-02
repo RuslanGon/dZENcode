@@ -23,7 +23,8 @@ const AddComent = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:3001/post', formData);
+      // await axios.post('http://localhost:3001/post', formData);
+      await axios.post('https://dzencode.onrender.com/post', formData);
       alert('Комментарий успешно добавлен!');
       setFormData({
         username: '',
