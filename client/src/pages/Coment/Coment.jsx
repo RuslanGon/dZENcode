@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Coment.module.css";
 import { FaPen, FaTrashAlt } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const Coment = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -37,7 +39,7 @@ const Coment = () => {
   };
 
   const handleEdit = (id) => {
-    alert(`Редактирование поста с ID: ${id} (функция пока не реализована)`);
+    navigate(`/edit/${id}`);
   };
 
   if (loading) return <div className={styles.loading}>Загрузка...</div>;
