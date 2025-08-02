@@ -5,6 +5,7 @@ import Header from './components/Header/Header.jsx'
 import Main from './components/Main/Main.jsx'
 import Coment from './pages/Coment/Coment.jsx'
 import AddComent from './pages/AddComent/AddComent.jsx'
+import EditComent from './pages/EditComent/EditComent.jsx'
 
 function App() {
   return (
@@ -16,10 +17,9 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/comments" element={<Coment />} />
           <Route path="/add-comment" element={<AddComent />} />
-
+          <Route path="/edit/:id" element={<EditComent />} />
         </Routes>
       </div>
-
       <Footer />
     </div>
   )
